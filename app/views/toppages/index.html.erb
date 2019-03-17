@@ -4,12 +4,21 @@
       <%= form_for(@micropost) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :bitter, '苦味' %>
+          <%= f.select :bitter, [["1", 1], ["2", 2],  ["3", 3], ["4", 4],["5", 5]], {:prompt => "選択してください"}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :acidity, '酸味' %>
+          <%= f.select :acidity, [["1", 1], ["2", 2],  ["3", 3], ["4", 4],["5", 5]], {:prompt => "選択してください"}, class: "form-control" %>
+        </div>
+        <div class="form-group">
           <%= f.label :bodied, 'コク' %>
-          <%= f.select :bodied, [["1", 1], ["2", 2],  ["3", 3], ["4", 4],["5", 5] ],  :prompt => "選択してください" %>
+          <%= f.select :bodied, [["1", 1], ["2", 2],  ["3", 3], ["4", 4],["5", 5]], {:prompt => "選択してください"}, class: "form-control" %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>
-      <%= line_chart Micropost.group(:user_id).count %>
     </aside>
     <div class="col-xs-8">
       <%= render 'microposts/microposts', microposts: @microposts %>
