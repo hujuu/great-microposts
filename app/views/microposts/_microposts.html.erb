@@ -10,13 +10,15 @@
         </div>
         <div>
           <p><%= micropost.content %></p>
-          <p><%= bar_chart [["コク", micropost.bodied], ["苦味", micropost.bitter],  ["酸味", micropost.acidity]], colors: ["#996633", "#666"],min: 0, max: 5 %></p>
         </div>
         <div>
           <% if current_user == micropost.user %>
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
+      </div>
+      <div class="media-right">
+        <%= bar_chart [["コク", micropost.bodied], ["苦味", micropost.bitter],  ["酸味", micropost.acidity]], colors: ["#996633", "#666"],min: 0, max: 5, width: "250px", height: "150px" %>
       </div>
     </li>
   <% end %>
